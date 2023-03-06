@@ -9,4 +9,10 @@ import javafx.scene.control.Button;
 public class TBuilderController {
 	@FXML
 	private Button slot1,slot2,slot3,slot4,slot5,slot6, addBtn, removeBtn;
+	
+	@FXML
+	public void search() {}
+	
+	@FXML
+	public void remove() {}
 }
