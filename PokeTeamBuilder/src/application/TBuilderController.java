@@ -5,10 +5,14 @@ package application;
  * Class takes care of the actions from the FXML file*/
 import javafx.fxml.FXML;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import com.google.gson.Gson;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -40,6 +44,13 @@ public class TBuilderController {
 				URL url = new URL("https://pokeapi.co/api/v2/pokemon/" + textFound);
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
 				con.setRequestMethod("GET");
+				con.setRequestProperty("User", "user");
+				if(con.getResponseCode() == 200) {
+					Gson gson = new Gson();
+					Pokemon found = gson.fromJson(new BufferedReader(new InputStreamReader(con.getInputStream())), Pokemon.class);
+					this.printArea.setText(found.toString());
+				}
+				con.disconnect();
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
