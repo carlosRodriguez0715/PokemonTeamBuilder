@@ -1,4 +1,7 @@
 package application;
+
+import java.util.ArrayList;
+
 /**
  * @author: Carlos Rodriguez
  * Class contains basic information
@@ -6,7 +9,7 @@ package application;
 
 public class Pokemon {
 	private String name;
-	private String[] types;
+	private ArrayList<String> types;
 	
 	//Default Constructor
 	public Pokemon() {
@@ -15,7 +18,7 @@ public class Pokemon {
 	}
 	
 	//Passing name and types to constructor
-	public Pokemon(String name, String[] types) {
+	public Pokemon(String name, ArrayList<String> types) {
 		this.setName(name);
 		this.setTypes(types);
 	}
@@ -25,7 +28,7 @@ public class Pokemon {
 		return name;
 	}
 	
-	public String[] getTypes() {
+	public ArrayList<String> getTypes() {
 		return types;
 	}
 
@@ -34,7 +37,7 @@ public class Pokemon {
 		this.name = name;
 	}
 
-	public void setTypes(String[] types) {
+	public void setTypes(ArrayList<String> types) {
 		this.types = types;
 	}
 	
