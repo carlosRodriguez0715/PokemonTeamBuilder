@@ -18,7 +18,7 @@
             <Button fx:id="slot5" layoutX="453.0" layoutY="231.0" mnemonicParsing="false" />
             <Button fx:id="slot6" layoutX="557.0" layoutY="231.0" mnemonicParsing="false" />
             <TextArea layoutX="208.0" layoutY="298.0" prefHeight="200.0" prefWidth="248.0" />
-            <Button fx:id="addBtn1" layoutX="28.0" layoutY="383.0" mnemonicParsing="false" text="Remove Last Added" />
+            <Button fx:id="removeBtn" layoutX="28.0" layoutY="383.0" mnemonicParsing="false" text="Remove Last Added" />
          </children>
       </AnchorPane>
    </children>
