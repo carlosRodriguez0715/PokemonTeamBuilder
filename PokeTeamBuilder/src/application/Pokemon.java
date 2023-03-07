@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 /**
  * @author: Carlos Rodriguez
  * Class contains basic information
