@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Pokemon {
 	private String name;
-	private ArrayList<String> types;
+	private Object[] types;
 	
 	//Default Constructor
 	public Pokemon() {
@@ -18,7 +18,7 @@ public class Pokemon {
 	}
 	
 	//Passing name and types to constructor
-	public Pokemon(String name, ArrayList<String> types) {
+	public Pokemon(String name, Object[] types) {
 		this.setName(name);
 		this.setTypes(types);
 	}
@@ -28,8 +28,25 @@ public class Pokemon {
 		return name;
 	}
 	
-	public ArrayList<String> getTypes() {
+	public Object[] getTypesArr() {
 		return types;
+	}
+	
+	public String getTypes() {
+		if(this.types.length == 1) {
+			String t1 = this.types[0].toString().substring(20, 32).toUpperCase();
+			String[] filtert1 = t1.split(",");
+			return filtert1[0].toUpperCase();
+		}
+		if(this.types.length > 1) {
+			String t1 = this.types[0].toString().substring(20, 32);
+			String[] filtert1 = t1.split(",");
+			String t2 = this.types[1].toString().substring(20, 32);
+			String[] filtert2 = t2.split(",");
+			
+			return filtert1[0].toUpperCase() + "/" + filtert2[0].toUpperCase();
+		}
+		return "";
 	}
 
 	//Setters
@@ -37,7 +54,7 @@ public class Pokemon {
 		this.name = name;
 	}
 
-	public void setTypes(ArrayList<String> types) {
+	public void setTypes(Object[] types) {
 		this.types = types;
 	}
 	
@@ -51,6 +68,6 @@ public class Pokemon {
 	
 	//toString override
 	public String toString() {
-		return "NAME: " + this.name + ". TYPE(s): " + this.types.toString();
+		return "NAME: " + this.name.toUpperCase() + ". TYPE(s): " + this.getTypes();
 	}
 }
