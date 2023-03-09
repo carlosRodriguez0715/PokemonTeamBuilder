@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
@@ -65,7 +67,7 @@ public class TBuilderController implements Initializable {
 	}
 	
 	@FXML
-	public void search() {
+	private void search() {
 		String textFound = searchBar.getText();
 		if(textFound.isBlank()) {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -81,11 +83,11 @@ public class TBuilderController implements Initializable {
 				if(con.getResponseCode() == 200) {
 					Gson gson = new Gson();
 					Pokemon found = gson.fromJson(new BufferedReader(new InputStreamReader(con.getInputStream())), Pokemon.class);
-					this.printArea.setText(found.toString());
-					if(this.top < 6) {
+					if(this.top < 5) {
 						this.top++;
 						this.team[this.top] = found;
-						//this.allBtns[this.top];
+						this.allBtns[this.top].setGraphic(new ImageView(new Image("pball.png", 25.0, 40.0, true, true)));
+						this.updateTxtArea();
 					}
 					else {
 						Alert alert = new Alert(AlertType.WARNING);
@@ -108,5 +110,20 @@ public class TBuilderController implements Initializable {
 	}
 	
 	@FXML
-	public void remove () {}
+	private void remove () {
+		if(this.top > -1) {
+			this.allBtns[this.top].setGraphic(null);
+			this.team[this.top] = null;
+			this.top--;
+			this.updateTxtArea();
+		}
+	}
+	
+	private void updateTxtArea() {
+		String s = "";
+		for(int i=0; i<=this.top; i++) {
+			s += "Slot " + (i+1) +": " + this.team[i].toString() + "\n";
+		}
+		this.printArea.setText(s);
+	}
 }

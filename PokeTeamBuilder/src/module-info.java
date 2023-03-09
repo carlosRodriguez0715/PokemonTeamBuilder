@@ -3,6 +3,7 @@ module PokeTeamBuilder {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires com.google.gson;
+	requires javafx.graphics;
 	
 	opens application to javafx.graphics, javafx.fxml, com.google.gson;
 }
